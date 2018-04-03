@@ -20,6 +20,10 @@
       "type": "string",
       "required": true
     },
+    "articleId": {
+      "type": "string",
+      "required": true
+    },
     "commentId": {
       "type": "string",
       "required": true
