@@ -7,3 +7,18 @@ install:
 - npm i
 - npm run lint
 - npm run docker
+deploy:
+  - provider: cloudfoundry
+    api: https://api.run.pivotal.io
+    username: david.ahern26@gmail.com
+    password:
+      secure: LPkK6+eaYenY9+lwGM5Djlatb1PeqoTJqssSo3FTJUVKLUj+7lZbnpxE/BTNHVtIVhe4MStN7pK+Ig79pMOQFiea5p0lqcS0gvGN99v8ud19N933zk9JhGYVl+mHYzZNT+0MPwK5zfCwf9vMeO2uFdtwRfgAsmZgEwHGrMBvj3Vmk4QsApzJWy5ZhKomceMEoF/YtVbbJwd2UJGbVlxdTXl+BBWQC/GB5CmFEFCF5dZjc6zuSzlCZZhcXadDu5Cq9v4FZnksfFxT5MBoxoPq75RwjTaWGef05AqMlprwm6igQjdpUQmUz5wD7at2A1y5f2U+JMWtZij/WaR1cCIqOXiHsZ+AQy3RKfFKnSH97OQePTWkdsP+bvzi80fLoGObzObykroZbXVo9QqDmz6S53Rb4bMXmehirDDHljlNqzbLa+c5vCWdFcA8KbXu/wIVFre891HHlBfDaVvjOI0QIMzgkMp8PmKc65aOuJ5y1vtbwMjqoq0cDvqq213lNeNpSz5jUpZoc3YdL1GKXedQsQWoWqFYZmcITra3ZlyY2x3YEgO5VOVqWgj13Rn6MOaWfzsiS4USU4qTj62+m8kRY1dFytKLFakuMam24DNw5uEYtBplpyvkAg1AiErcHtLQHkyypUwRWQiuT1nPokkJOCSBRZrZ2qnlnWoEEPqYvy8=
+    organization: thor
+    space: dev
+    on:
+      repo: msc-blog-assignment/msc-blog-comments-api
+      branch: master
+  - provider: script
+    script: docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" && yarn docker:tag && yarn docker:push
+    on:
+      branch: master
