@@ -13,9 +13,6 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db"
-  },
   "AccessToken": {
     "dataSource": "db",
     "public": false
@@ -24,15 +21,12 @@
     "dataSource": "db",
     "public": false
   },
-  "RoleMapping": {
+  "comment": {
     "dataSource": "db",
-    "public": false,
-    "options": {
-      "strictObjectIDCoercion": true
-    }
+    "public": true
   },
-  "Role": {
+  "response": {
     "dataSource": "db",
-    "public": false
+    "public": true
   }
 }
